@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   Image,
   Dimensions,
-  TouchableHighlight
+  TouchableHighlight,Button
 } from 'react-native';
 import styles from './styles';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
@@ -37,11 +37,11 @@ export default class RecipeScreen extends React.Component {
   }
 
   renderImage = ({ item }) => (
-    <TouchableHighlight>
+    <TouchableOpacity>
       <View style={styles.imageContainer}>
         <Image style={styles.image} source={{ uri: item }} />
       </View>
-    </TouchableHighlight>
+    </TouchableOpacity>
   );
 
   onPressIngredient = item => {
@@ -56,7 +56,7 @@ export default class RecipeScreen extends React.Component {
     const item = navigation.getParam('item');
     const category = getCategoryById(item.categoryId);
     const title = getCategoryName(category.id);
-
+    
     return (
       <ScrollView style={styles.container}>
         <View style={styles.carouselContainer}>
@@ -95,11 +95,11 @@ export default class RecipeScreen extends React.Component {
         <View style={styles.infoRecipeContainer}>
           <Text style={styles.infoRecipeName}>{item.title}</Text>
           <View style={styles.infoContainer}>
-            <TouchableHighlight
+            <TouchableOpacity
               onPress={() => navigation.navigate('RecipesList', { category, title })}
             >
               <Text style={styles.category}>{getCategoryName(item.categoryId).toUpperCase()}</Text>
-            </TouchableHighlight>
+            </TouchableOpacity>
           </View>
 
           <View style={styles.infoContainer}>
@@ -119,6 +119,10 @@ export default class RecipeScreen extends React.Component {
           <View style={styles.infoContainer}>
             <Text style={styles.infoDescriptionRecipe}>{item.description}</Text>
           </View>
+          <Button
+            title='video'
+            onPress={() => navigation.navigate('videoscreen')}
+          />
         </View>
       </ScrollView>
     );
