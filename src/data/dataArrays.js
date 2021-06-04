@@ -39,16 +39,7 @@ export const categories = [
   },
 ];
 
-export const videos=[
-    {
-      videoId:"EiVoWp5b93s"
-    },
-    {
-      
-      videoId:"xkpHye6H_E"
-    }
-  
-];
+
 
 export const recipes = [
   {
